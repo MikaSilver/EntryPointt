@@ -232,6 +232,8 @@ export class Game extends Phaser.Scene
     hero!: Phaser.GameObjects.Sprite;
     targetX!: number;
     isGameStarted: boolean = false;
+    npcList: string[];
+    npcsData: Record<string, INPCData>;
 
     constructor ()
     {
@@ -244,7 +246,7 @@ export class Game extends Phaser.Scene
         if (!this.anims.exists('fire_anim')) {
             this.anims.create({
                 key: 'fire_anim',
-                frames: this.anims.generateFrameNumbers('fire', { start: 0, end: 3 }), // 4 кадра
+                frames: this.anims.generateFrameNumbers('fire', { start: 0, end: 2 }), // 4 кадра
                 frameRate: 4, // Скорость (4щщ кадров в секунду)
                 repeat: -1    // Зациклить навсегда
             });
@@ -254,7 +256,7 @@ export class Game extends Phaser.Scene
         if (!this.anims.exists('hero_walk')) {
             this.anims.create({
                 key: 'hero_walk',
-                frames: this.anims.generateFrameNumbers('hero', { start: 1, end: 5 }), // Кадры 0, 1, 2
+                frames: this.anims.generateFrameNumbers('hero', { start: 1, end: 4 }), // Кадры 0, 1, 2, 3
                 frameRate: 4, // Скорость анимации (8 кадров в секунду)
                 repeat: -1    // Зациклено
             });
@@ -279,7 +281,10 @@ export class Game extends Phaser.Scene
             rest();
         });
 
-
+        // Получаем список ID (например, ["doctor", "patient"])
+        this.npcList = this.cache.json.get('npcList') as string[];
+        // Получаем сами данные NPC (объект, где ключ — это ID)
+        this.npcsData = this.cache.json.get('npcsData') as Record<string, INPCData>;
 
         // 1. Создаем камеры
         this.gameCamera = this.cameras.main;

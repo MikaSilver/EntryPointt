@@ -1,7 +1,7 @@
 {
-    "doctor": {
-        "smallImage": "npc_doctor_small",
-        "closeUpImage": "npc_doctor_big",
+    "nameless": {
+        "smallImage": "npc/images/simple/nameless.png",
+        "closeUpImage": "npc/images/full/namelessFull.png",
         "diagnosis": "Острая паранойя",
         "dialogue": [
             "Здравствуйте, пациент.",
@@ -9,9 +9,9 @@
             "Это нормально для нашего мира."
         ]
     },
-    "patient": {
-        "smallImage": "npc_patient_small",
-        "closeUpImage": "npc_patient_big",
+    "post": {
+        "smallImage": "npc/images/simple/post.png",
+        "closeUpImage": "npc/images/full/postFull.png",
         "diagnosis": "Амнезия",
         "dialogue": [
             "Где я?",
